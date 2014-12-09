@@ -1,3 +1,7 @@
+.hidden
+{
+	display:none;
+}
 #page_login
 {
 	background-color:#999;
@@ -7,10 +11,6 @@
 	position:absolute;
 	width:100%;
 	font-family: arial;
-}
-#loginbox
-{
-	position:absolute;
 }
 #login_input
 {
@@ -61,4 +61,20 @@ caption{
 	font-size:20px;
 	font-weight: bold;
 	bottom-margin:80px;
+}
+progress
+{	
+	width:300px;
+	padding:2px;
+	background-color:white;
+	border:1px solid black;
+	text-align:center;
+	background-color:green;
+}
+.container
+{
+	width: 1000px;
+	margin: 0 auto;
+	text-align: center;
+	background-color:green;
 }

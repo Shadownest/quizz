@@ -1,4 +1,4 @@
-!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="UTF-8">
@@ -9,11 +9,66 @@
 		<link type="text/css" rel="stylesheet" href="style.css">
 	</head>
 	<body>
-		<div id="page_login">
-			<center><h1 style="font-size:90px">Quizz</h1></center>
-			<div id="loginbox">
-				<input id="login_input" type="text" placeholder="Login" autofocus/>
+		<div id="page_login" class="">
+			<center>
+				<h1 style="font-size:90px">Quizz</h1>
+				<div id="loginbox">
+					<input id="login_input" type="text" placeholder="Login" autofocus/>
+				</div>
+			</center>
+		</div>
+		<div id="page_question" class="container hidden">
+			<div>
+				<div>
+					<p> QUESTION : </p> QUEL EST LE PIGEON LE PLUS INTELLIGENT SUR LA PLACE DES HALLES
+				</div>
+				<br>
+				<div>
+					<progress value="50%" max="200">50%</progress>
+				</div>
+				<br>
+				<div>
+					<label for="answer">REPONSE : </label>
+					<input type="text" name="answer" id="answer">
+				</div>
+				<br>
 			</div>
+		</div>
+		<div id="page_classement" class="hidden">
+			<table class="score" border="1">
+				<caption>Podium</caption>
+				<thead>
+					<tr>
+						<th>2ème</th>
+						<th>1er</th>
+						<th>3ème</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td></td>
+						<td class="fort">1</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td class="fort">2</td>
+						<td></td>
+						<td class="fort">3</td>
+					</tr>
+				</tbody>
+			</table>
+			<table class="quatre" border="1">
+				<tbody>
+					<tr>
+						<td>4ème</td>
+						<td class="col2 faible">4</td>
+					</tr>
+					<tr>
+						<td>5ème</td>
+						<td class="col2 faible">5</td>
+					</tr>
+				</tbody>
+			</table>
 		</div>
 	</body>
 </html>
