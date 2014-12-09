@@ -55,11 +55,16 @@ $('document').ready(function()
 				          	}
 				        });
                     });
-                    socket.on('end', function(reponse)
+                    socket.on('end', function(reponse, scores)
                     {
                    		$('#page_question').hide();
                    		$('#page_classement').show();
                    		$('#reponse').html(reponse);
+                   		$('.s1').html(scores[0]['name']+' ('+scores[0]['score']+')');
+                   		$('.s2').html(scores[1]['name']+' ('+scores[1]['score']+')');
+                   		$('.s3').html(scores[2]['name']+' ('+scores[2]['score']+')');
+                   		$('.s4').html(scores[3]['name']+' ('+scores[3]['score']+')');
+                   		$('.s5').html(scores[4]['name']+' ('+scores[4]['score']+')');
                     });
                 });
             }

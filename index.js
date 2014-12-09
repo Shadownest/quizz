@@ -30,7 +30,10 @@ setInterval(function()
     }
     else if (timer == 10)
     {
-        io.emit('end', reponse);
+    	mysql.query("SELECT name, score FROM user ORDER BY score", function(err, rows, fields)
+    	{
+        	io.emit('end', reponse, rows);
+    	});
     }
     else if (timer > 15)
         timer = -1;
