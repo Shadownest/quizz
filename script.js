@@ -11,7 +11,18 @@ $('document').ready(function()
 	var socket = io('http://'+ip+':1234/');
 	socket.on('connected', function(data)
     {
-        socket.emit('pong');
-        alert('connecte !');
+        $('#login_input').keypress(function(info)
+        {
+            if (info.keyCode == 13)
+            {
+                socket.emit('login', $('#login_input').val());
+                $('#login_input').val('');
+                $('#page_login').hide();
+                socket.on('logged', function(login, score)
+                {
+                    alert(login+"\n"+score);
+                });
+            }
+        });
     });
 });
