@@ -22,11 +22,17 @@ io.on('connection', function (socket)// -> "quand il a une nouvelle connexion" -
                     console.log('Creation de '+login);
                     mysql.query("INSERT INTO user (name) VALUES (?)", [login], function(err, rows, fields)
                     {
+                        socket.login = login;
+                        socket.score = 0;
                         socket.emit('logged', login, 0);
                     });
                 }
                 else
+                {
+                    socket.login = login;
+                    socket.score = rows[0]['score'];
                     socket.emit('logged', login, rows[0]['score']);
+                }
             }
             else
                 console.log(err);
