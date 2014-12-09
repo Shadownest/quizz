@@ -26,7 +26,7 @@ setInterval(function()
                 console.log(err);
         });
     }
-    else if (timer > 10)
+    else if (timer == 10)
     {
         io.emit('end', reponse);
     }
