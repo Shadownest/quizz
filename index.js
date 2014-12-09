@@ -55,14 +55,14 @@ io.on('connection', function (socket)// -> "quand il a une nouvelle connexion" -
                     {
                         socket.login = login;
                         socket.score = 0;
-                        socket.emit('logged', login, 0);
+                        socket.emit('logged', login, 0, question);
                     });
                 }
                 else
                 {
                     socket.login = login;
                     socket.score = rows[0]['score'];
-                    socket.emit('logged', login, rows[0]['score']);
+                    socket.emit('logged', login, rows[0]['score'], question);
                 }
             }
             else

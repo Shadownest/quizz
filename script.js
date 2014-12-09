@@ -18,22 +18,48 @@ $('document').ready(function()
                 socket.emit('login', $('#login_input').val());
                 $('#login_input').val('');
                 $('#page_login').hide();
-                socket.on('logged', function(login, score)
+                socket.on('logged', function(login, score, question)
                 {
-                    $('#page_waiting').show();
-                    $('.waiting_loggin').html(login);
-                    $('.waiting_score').html(score);
+                    $('#page_question').show();
+                    $('#questionbox').html(question);
+	            	$('#answer').show();
+                    $('#answer').keypress(function(info)
+			        {
+			            if (info.keyCode == 13)
+			            {
+			            	$('#answer').off('keypress');
+			            	socket.emit('reponse', $('#answer').val());
+			            	$('#answer').val('');
+			            	$('#answer').hide();
+			          	}
+			        });
                     socket.on('timer', function(timer)
                     {
-                    	console.log("timer > ", timer);
+                    	$('#progress').val(timer);
+                    	$('#progress_time').html((10-timer)+'s');
                     });
                     socket.on('question', function(question)
                     {
-                    	console.log("question > ", question);
+                   		$('#page_question').show();
+                   		$('#page_classement').hide();
+                    	$('#questionbox').html(question);
+		            	$('#answer').show();
+	                    $('#answer').keypress(function(info)
+				        {
+				            if (info.keyCode == 13)
+				            {
+				            	$('#answer').off('keypress');
+				            	socket.emit('reponse', $('#answer').val());
+				            	$('#answer').val('');
+				            	$('#answer').hide();
+				          	}
+				        });
                     });
                     socket.on('end', function(reponse)
                     {
-                    	console.log("end > ", reponse);
+                   		$('#page_question').hide();
+                   		$('#page_classement').show();
+                   		$('#reponse').html(reponse);
                     });
                 });
             }

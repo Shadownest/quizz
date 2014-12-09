@@ -17,21 +17,16 @@
 				</div>
 			</center>
 		</div>
-		<div id="page_waiting" class="container hidden">
-			Bonjour <span class="waiting_loggin"></span> (<span class="waiting_score"></span>)
-			<div>En attente de la prochaine partie...</div>
-			<br />
-			<div class="waiting_time"></div>
-		</div>
 		<div id="page_question" class="container hidden">
 			<div>
 				<div>
-					<p> QUESTION : </p> QUEL EST LE PIGEON LE PLUS INTELLIGENT SUR LA PLACE DES HALLES
+					<p> QUESTION : </p> <span id="questionbox">QUEL EST LE PIGEON LE PLUS INTELLIGENT SUR LA PLACE DES HALLES</span>
 				</div>
 				<br>
 				<div>
-					<progress value="50%" max="200">50%</progress>
+					<progress id="progress" value="5" max="10"></progress>
 				</div>
+				<div id="progress_time"></div>
 				<br>
 				<div>
 					<label for="answer">REPONSE : </label>
@@ -41,6 +36,7 @@
 			</div>
 		</div>
 		<div id="page_classement" class="hidden">
+			<h1 id="reponse"></h1>
 			<table class="score" border="1">
 				<caption>Podium</caption>
 				<thead>
