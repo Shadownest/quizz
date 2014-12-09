@@ -1,50 +1,19 @@
-<script src="jquery.js"></script>
-<script src="socket.io.js"></script>
-<style>
-#page_login
-{
-	background-color:#999;
-	height:100%;
-	top:0px;
-	left:0px;
-	position:absolute;
-	width:100%;
-	font-family: arial;
-}
-#loginbox
-{
-	position:absolute;
-}
-#login_input
-{
-	height:100px;
-	width:300px;
-	font-size:30px;
-	text-align:center;
-}
-</style>
-<div id="page_login">
-	<center><h1 style="font-size:90px">Quizz</h1></center>
-	<div id="loginbox">
-		<input id="login_input" type="text" placeholder="Login" autofocus/>
-	</div>
-</div>
-<script>
-var ip = '10.32.195.171';
-var width = document.body.clientWidth;
-var height = document.body.clientHeight;
-$(window).resize(function()
-{
-	width = document.body.clientWidth;
-	height = document.body.clientHeight;
-	$('#loginbox').css('top', (height / 2) - ($('input').height() / 2) + 'px');
-	$('#loginbox').css('left', (width / 2) - ($('input').width() / 2) + 'px');
-});
-$('#loginbox').css('top', (height / 2) - ($('input').height() / 2) + 'px');
-$('#loginbox').css('left', (width / 2) - ($('input').width() / 2) + 'px');
-var socket = io('http://'+ip+':1234/');
-socket.on('ping', function ()
-{
-	socket.emit('pong');
-});
-</script>
+!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Quizz</title>
+		<script src="jquery.js"></script>
+		<script src="socket.io.js"></script>
+		<script src="script.js"></script>
+		<link type="text/css" rel="stylesheet" href="style.css">
+	</head>
+	<body>
+		<div id="page_login">
+			<center><h1 style="font-size:90px">Quizz</h1></center>
+			<div id="loginbox">
+				<input id="login_input" type="text" placeholder="Login" autofocus/>
+			</div>
+		</div>
+	</body>
+</html>

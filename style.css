@@ -1,0 +1,64 @@
+#page_login
+{
+	background-color:#999;
+	height:100%;
+	top:0px;
+	left:0px;
+	position:absolute;
+	width:100%;
+	font-family: arial;
+}
+#loginbox
+{
+	position:absolute;
+}
+#login_input
+{
+	height:100px;
+	width:300px;
+	font-size:30px;
+	text-align:center;
+}
+table{
+	width:50%;
+	margin:auto;
+}
+.score{
+	
+	margin-left:200px;
+	margin-top:100px;
+}
+td{
+	text-align: center;
+	width: 150px;
+	height: 50px;
+}
+
+th{
+	text-align: center;
+	width: 150px;
+	height: 50px;
+}
+
+table.score{
+	border-collapse: separate;
+}
+.quatre{
+	margin-top:80px;
+	margin-left:200px;
+}
+.col2{
+	width: 305px;
+	height: 50px;
+}
+.fort{
+	background-color:#89DA5D;
+}
+.faible{
+	background-color:#F93618;
+}
+caption{
+	font-size:20px;
+	font-weight: bold;
+	bottom-margin:80px;
+}
