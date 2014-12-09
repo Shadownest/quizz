@@ -21,6 +21,7 @@ $('document').ready(function()
                 socket.on('logged', function(login, score)
                 {
                     alert(login+"\n"+score);
+                    $('#page_question').show();
                 });
             }
         });
