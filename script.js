@@ -20,8 +20,9 @@ $('document').ready(function()
                 $('#page_login').hide();
                 socket.on('logged', function(login, score)
                 {
-                    alert(login+"\n"+score);
-                    $('#page_question').show();
+                    $('#page_waiting').show();
+                    $('.waiting_loggin').html(login);
+                    $('.waiting_score').html(score);
                 });
             }
         });
