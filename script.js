@@ -44,6 +44,7 @@ $('document').ready(function()
                    		$('#page_classement').hide();
                     	$('#questionbox').html(question);
 		            	$('#answer').show();
+		            	$('#answer').focus();
 	                    $('#answer').keypress(function(info)
 				        {
 				            if (info.keyCode == 13)
