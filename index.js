@@ -12,7 +12,7 @@ var reponse;
 var timer = 0;
 setInterval(function()
 {
-    if (timer == 0)
+    if (timer == 1)
     {
         mysql.query("SELECT question, reponse FROM questions ORDER BY RAND() LIMIT 1", function(err, rows, fields)
         {
