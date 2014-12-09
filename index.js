@@ -9,35 +9,32 @@ mysql.connect();
 var io = require('socket.io')(1234);// --> créer le server websocket -> module socket.io (npm install socket.io) npm = node package manager
 var question;
 var reponse;
-var timer = 10;
-setInterval(function()
-{
-    mysql.query("SELECT question, reponse FROM questions ORDER BY RAND() LIMIT 1", function(err, rows, fields)
-    {
-        if (!err)
-        {
-            question = rows[0]['question'];
-            reponse = rows[0]['reponse'];
-            io.emit('question', question);
-        }
-        else
-            console.log(err);
-    });
-}, 15000);
+var timer = 0;
 setInterval(function()
 {
     if (timer == 0)
     {
+        mysql.query("SELECT question, reponse FROM questions ORDER BY RAND() LIMIT 1", function(err, rows, fields)
+        {
+            if (!err)
+            {
+                question = rows[0]['question'];
+                reponse = rows[0]['reponse'];
+                io.emit('question', question);
+            }
+            else
+                console.log(err);
+        });
+    }
+    else if (timer > 10)
+    {
         io.emit('end', reponse);
     }
-    else if (timer <= -5)
-    {
-        timer = 10;
+    else if (timer > 15)
+        timer = 0;
+    if (timer <= 10)
         io.emit('timer', timer);
-    }
-    else
-        io.emit('timer', timer);
-    timer--;
+    timer++;
 }, 1000);
 io.on('connection', function (socket)// -> "quand il a une nouvelle connexion" -> appeler la fonction(socket) -> socket = connexion de l'utilisateur
 {
