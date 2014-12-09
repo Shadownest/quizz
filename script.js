@@ -9,15 +9,9 @@ $('document').ready(function()
 	});
 	$('#loginbox').css('top', (height / 2) - ($('#login_input').height() / 2) + 'px');
 	var socket = io('http://'+ip+':1234/');
-	socket.on('logged', function(data)
-	{
-		$.get('score.html', function(data)
-		{
-
-		});
-	});
-	socket.on('ping', function ()
-	{
-		socket.emit('pong');
-	});
+	socket.on('connected', function(data)
+    {
+        socket.emit('pong');
+        alert('connecte !');
+    });
 });
