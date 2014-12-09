@@ -1,7 +1,32 @@
 <script src="jquery.js"></script>
 <script src="socket.io.js"></script>
-<div id="loginbox" style="position:absolute;">
-	<input type="text" placeholder="Login"/>
+<style>
+#page_login
+{
+	background-color:#666;
+	height:100%;
+	top:0px;
+	left:0px;
+	position:absolute;
+	width:100%;
+}
+#loginbox
+{
+	position:absolute;
+}
+#login_input
+{
+	height:100px;
+	width:300px;
+	font-size:30px;
+	text-align:center;
+}
+</style>
+<div id="page_login">
+	<center><h1 style="font-size:90px">Quizz</h1></center>
+	<div id="loginbox">
+		<input id="login_input" type="text" placeholder="Login" autofocus/>
+	</div>
 </div>
 <script>
 var ip = '10.32.195.171';
