@@ -10,9 +10,10 @@ var io = require('socket.io')(1234);// --> créer le server websocket -> module 
 var question;
 var reponse;
 var timer = 0;
+var score = 5;
 setInterval(function()
 {
-    if (timer == 1)
+    if (timer == 0)
     {
         mysql.query("SELECT question, reponse FROM questions ORDER BY RAND() LIMIT 1", function(err, rows, fields)
         {
@@ -21,6 +22,7 @@ setInterval(function()
                 question = rows[0]['question'];
                 reponse = rows[0]['reponse'];
                 io.emit('question', question);
+                score = 5;
             }
             else
                 console.log(err);
@@ -31,10 +33,10 @@ setInterval(function()
         io.emit('end', reponse);
     }
     else if (timer > 15)
-        timer = 0;
+        timer = -1;
+    timer++;
     if (timer <= 10)
         io.emit('timer', timer);
-    timer++;
 }, 1000);
 io.on('connection', function (socket)// -> "quand il a une nouvelle connexion" -> appeler la fonction(socket) -> socket = connexion de l'utilisateur
 {
@@ -66,6 +68,26 @@ io.on('connection', function (socket)// -> "quand il a une nouvelle connexion" -
             else
                 console.log(err);
         });
+    });
+    socket.on('reponse', function(reponse_user)
+    {
+        if (reponse_user == reponse)
+        {
+            socket.score = socket.score + score;
+            score--;
+            mysql.query("UPDATE user SET score=? WHERE name=?", [socket.score, socket.login], function(err, rows, fields)
+            {
+                socket.emit('score', socket.score);
+            });
+        }
+        else
+        {
+            socket.score = socket.score - 1;
+            mysql.query("UPDATE user SET score=? WHERE name=?", [socket.score, socket.login], function(err, rows, fields)
+            {
+                socket.emit('score', socket.score);
+            });
+        }
     });
     socket.emit('connected');// envoyer a la socket (navigateur/utilisateur/client/...) le message "connected"
 });
