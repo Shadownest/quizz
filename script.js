@@ -23,6 +23,18 @@ $('document').ready(function()
                     $('#page_waiting').show();
                     $('.waiting_loggin').html(login);
                     $('.waiting_score').html(score);
+                    socket.on('timer', function(timer)
+                    {
+                    	console.log("timer > ", timer);
+                    });
+                    socket.on('question', function(question)
+                    {
+                    	console.log("question > ", question);
+                    });
+                    socket.on('end', function(reponse)
+                    {
+                    	console.log("end > ", reponse);
+                    });
                 });
             }
         });
